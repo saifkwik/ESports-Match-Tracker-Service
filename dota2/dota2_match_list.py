@@ -55,14 +55,14 @@ for values in range(15):
     # sql_insert = 'INSERT INTO DOTA2_MATCHES (_INDEX, TEAMS, TIME_IST, Last_updated) VALUES(%s, %s, %s, %s)'
     sql_insert = 'UPDATE DOTA2_MATCHES SET TEAMS = %s, TIME_IST = %s, Last_updated = %s WHERE _INDEX = %s'
     val = (
-        str(f'{final_team_list[u][0]} VS {final_team_list[u][1]}'), str(dota2_time.dota2_time[u]), str(current_time), str(o))
+        str(f'{final_team_list[u][0]} VS {final_team_list[u][1]}'), str(dota2_time.dota2_time[u]), str(current_time),
+        str(o))
     e = str(f'{final_team_list[u][0]} VS {final_team_list[u][1]}')
     dota2_team_list.append(e)
     mycursor.execute(sql_insert, val)
     mydb.commit()
     o += 1
     u += 1
-
 
 # Merging Match names with time of Matches and converting it in a dictionary
 dota2_dict = dict(zip(dota2_team_list, dota2_time.dota2_time))

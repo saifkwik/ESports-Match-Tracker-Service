@@ -11,7 +11,7 @@ app = FastAPI()
 
 @app.get('/')
 def root():
-    link = f'http://127.0.0.1:8000/valorant',f'http://127.0.0.1:8000/cs',f'http://127.0.0.1:8000/dota2'
+    link = f'http://127.0.0.1:8000/valorant', f'http://127.0.0.1:8000/cs', f'http://127.0.0.1:8000/dota2'
     return link
 
 
@@ -33,6 +33,7 @@ def root(match_index):
     cs_matches_list.mycursor.execute(f'SELECT TEAMS, TIME_IST FROM game_database.CS_MATCHES limit {match_index}')
     _cs = cs_matches_list.mycursor.fetchall()
     return cs_last_updated, _cs
+
 
 @app.get('/dota2')
 def root(match_index):

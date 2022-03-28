@@ -9,6 +9,7 @@ browser = webdriver.Chrome(executable_path="C:\Program Files\chromed\chromedrive
 
 browser.get("https://ggscore.com/en/csgo/matches")
 html_source = browser.page_source
+browser.close()
 
 soup = BeautifulSoup(html_source, 'html.parser')
 

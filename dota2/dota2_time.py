@@ -12,6 +12,7 @@ browser = webdriver.Chrome(executable_path="C:\Program Files\chromed\chromedrive
 browser.get("https://liquipedia.net/dota2/Liquipedia:Upcoming_and_ongoing_matches")
 html_source = browser.page_source
 
+browser.close()
 soup = BeautifulSoup(html_source, 'html.parser')
 divTag = soup.find_all("span", class_="match-countdown")
 

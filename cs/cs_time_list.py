@@ -27,7 +27,7 @@ time_strings = n[0:15]
 q = 0
 for time in time_strings:
     if time == '':
-        time_strings[q] = time.replace('', 'Finished')
+        time_strings[q] = time.replace('', 'LIVE')
         q += 1
 
 z = 1

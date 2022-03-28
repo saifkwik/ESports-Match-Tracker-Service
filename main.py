@@ -1,6 +1,7 @@
 import time
 from Valorant import valo_matches_list
 from cs import cs_matches_list
+from dota2 import dota2_match_list
 from fastapi import FastAPI
 
 print('DATABASE UPDATED')
@@ -10,7 +11,7 @@ app = FastAPI()
 
 @app.get('/')
 def root():
-    link = f'http://127.0.0.1:8000/valorant',f'http://127.0.0.1:8000/cs'
+    link = f'http://127.0.0.1:8000/valorant',f'http://127.0.0.1:8000/cs',f'http://127.0.0.1:8000/dota2'
     return link
 
 
@@ -32,6 +33,14 @@ def root(match_index):
     cs_matches_list.mycursor.execute(f'SELECT TEAMS, TIME_IST FROM game_database.CS_MATCHES limit {match_index}')
     _cs = cs_matches_list.mycursor.fetchall()
     return cs_last_updated, _cs
+
+@app.get('/dota2')
+def root(match_index):
+    dota2_match_list.mycursor.execute(f'SELECT Last_Updated FROM game_database.DOTA2_MATCHES limit 1')
+    dota2_last_updated = f'Updated at {dota2_match_list.mycursor.fetchall()} time'
+    dota2_match_list.mycursor.execute(f'SELECT TEAMS, TIME_IST FROM game_database.DOTA2_MATCHES limit {match_index}')
+    _dota2 = dota2_match_list.mycursor.fetchall()
+    return dota2_last_updated, _dota2
 
 
 t1 = time.perf_counter()

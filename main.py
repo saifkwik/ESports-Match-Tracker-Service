@@ -6,7 +6,33 @@ from fastapi import FastAPI
 
 print('DATABASE UPDATED')
 
-app = FastAPI()
+description = """
+ESports Matches Tracker API gives you information of Ongoing/Upcoming Mathces 🚀
+
+## Games
+
+* VALORANT
+* COUNTER STRIKE
+* DOTA-2
+
+## URL
+
+VALORANT, CS, DOTA2:
+* ** http://127.0.0.1:8000/valorant?match_index='(Enter number of matches info you want to view (max<15))'
+* ** http://127.0.0.1:8000/cs?match_index='(Enter number of matches info you want to view (max<15))'
+* ** http://127.0.0.1:8000/dota2?match_index='(Enter number of matches info you want to view (max<15))'
+"""
+
+app = FastAPI(
+title="ESports Matches Tracker API",
+    description=description,
+    version="1.0",
+    contact={
+        "name": "Saif Ahmad",
+        "url": "https://github.com/saifkwik?",
+        "email": "saifkwik@gmail.com",
+    }
+)
 
 
 @app.get('/')

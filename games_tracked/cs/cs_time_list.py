@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 options = Options()
 options.headless = True
 
-browser = webdriver.Chrome(executable_path="C:\Program Files\chromed\chromedriver.exe", options=options)
+browser = webdriver.Chrome(executable_path="chrome_driver/chromedriver.exe", options=options)
 
 browser.get("https://ggscore.com/en/csgo/matches")
 html_source = browser.page_source

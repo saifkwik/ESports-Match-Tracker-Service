@@ -4,8 +4,12 @@ from selenium.webdriver.chrome.options import Options
 
 options = Options()
 options.headless = True
+# Uncomment below lines for using it in Docker
+# options.add_argument('--no-sandbox')
+# options.add_argument('--disable-dev-shm-usage')
 
 browser = webdriver.Chrome(executable_path="chrome_driver/chromedriver.exe", options=options)
+# browser = webdriver.Chrome(executable_path="/match-tracker/api_esports_matches/chrome_driver/chromedriver", options=options)
 
 browser.get("https://ggscore.com/en/csgo/matches")
 html_source = browser.page_source

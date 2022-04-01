@@ -5,6 +5,10 @@ from games_tracked.valorant import valo_time_list
 from db import database
 
 
+# from dateutil.tz import gettz
+# from utils.logs_handler import create_logger
+
+# logger = create_logger(__name__, remote_logging=False)
 def valo_update_database(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
@@ -47,6 +51,7 @@ def valo_update_database(url):
         o += 1
 
     print(f'Valorant Matches Schedule Updated successfully!')
+    # logger.info('valo_matches_ran_successfully')
 
     # Merging Match names with time of Matches and converting it in a dictionary
     valorant_dict = dict(zip(api_team_list, valo_time_list.time_strings))

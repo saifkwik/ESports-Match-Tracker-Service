@@ -5,6 +5,11 @@ from datetime import datetime
 from db import database
 
 
+# from dateutil.tz import gettz
+# from utils.logs_handler import create_logger
+#
+# logger = create_logger(__name__, remote_logging=False)
+
 def cs_database_update(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
@@ -47,7 +52,6 @@ def cs_database_update(url):
         current_time = now.strftime('%H:%M:%S')
         if cs_time_list.time_list[u][0] == '':
             cs_time_list.time_list[u][0] = 'Finished'
-        # sql_insert = 'INSERT INTO CS_MATCHES (_INDEX, TEAMS, TIME_IST, Last_updated) VALUES(%s, %s, %s, %s)'
         sql_insert = 'UPDATE CS_MATCHES SET TEAMS = %s, TIME_IST = %s, Last_updated = %s WHERE _INDEX = %s'
         val = (
             str(f'{team1_list[u][0]} VS {team2_list[u][0]}'), str(cs_time_list.time_list[u][0]), str(current_time),
@@ -59,6 +63,7 @@ def cs_database_update(url):
         o += 1
         u += 1
     print(f'Counter Strike Matches Schedule Updated successfully!')
+    # logger.info('cs_matches_ran_successfully')
 
     # Merging Match names with time of Matches and converting it in a dictionary
     cs_dict = dict(zip(cs_team_list, cs_time_list.time_strings))

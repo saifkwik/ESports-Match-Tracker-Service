@@ -1,11 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+# from webdriver_manager.chrome import ChromeDriverManager
 
 options = Options()
 options.headless = True
+# options.add_argument('--no-sandbox')
+# options.add_argument('--disable-dev-shm-usage')
 
 browser = webdriver.Chrome(executable_path="chrome_driver/chromedriver.exe", options=options)
+# browser = webdriver.Chrome(executable_path="/match-tracker/api_esports_matches/chrome_driver/chromedriver", options=options)
 
 browser.get("https://liquipedia.net/dota2/Liquipedia:Upcoming_and_ongoing_matches")
 html_source = browser.page_source

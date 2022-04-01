@@ -6,7 +6,7 @@ from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 import requests
 
-updater = Updater("ENTER YOUR API KEY HERE",
+updater = Updater("5188162071:AAEcgWM2NGal52V6FJnrjoU-IVNRdfEe7Mo",
                   use_context=True)
 
 
@@ -17,7 +17,6 @@ def start(update: Update, context: CallbackContext):
 # max index is 15
 def valo(update: Update, context: CallbackContext):
     url = "http://127.0.0.1:8000/valo?match_index=15"
-
     r = requests.get(url)
     val_api = r.json()
     for val in val_api:
@@ -43,8 +42,30 @@ def dota2(update: Update, context: CallbackContext):
 
 
 def unknown(update: Update, context: CallbackContext):
-    update.message.reply_text(
-        "Sorry '%s' is not a valid command" % update.message.text)
+    known_text = ['ashmir', 'valo', 'cs', 'dota2']
+    if update.message.text == 'ashmir':
+        update.message.reply_text('Hello there BOTFATHER')
+    if update.message.text == 'valo':
+        url = "http://127.0.0.1:8000/valo?match_index=15"
+        r = requests.get(url)
+        val_api = r.json()
+        for val in val_api:
+            update.message.reply_text(f'{val[0]} : {val[1]}')
+    if update.message.text == 'cs':
+        url = "http://127.0.0.1:8000/cs?match_index=15"
+        r = requests.get(url)
+        val_api = r.json()
+        for val in val_api:
+            update.message.reply_text(f'{val[0]} : {val[1]}')
+    if update.message.text == 'dota2':
+        url = "http://127.0.0.1:8000/dota2?match_index=15"
+        r = requests.get(url)
+        val_api = r.json()
+        for val in val_api:
+            update.message.reply_text(f'{val[0]} : {val[1]}')
+    else:
+        if update.message.text not in known_text:
+            update.message.reply_text("Sorry '%s' is not a valid command" % update.message.text)
 
 
 def unknown_text(update: Update, context: CallbackContext):

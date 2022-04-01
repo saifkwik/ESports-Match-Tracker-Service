@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 from db import database
 
@@ -42,7 +43,7 @@ def valorant(match_index):
     # valo_last_updated = f'Updated at {valo_matches_list.mycursor.fetchall()} time'
 
     database.mycursor.execute(f'SELECT TEAMS, TIME_LEFT FROM game_database.VALORANT_MATCHES '
-                                       f'LIMIT {match_index}')
+                              f'LIMIT {match_index}')
     _val = database.mycursor.fetchall()
     return _val
 
@@ -64,5 +65,8 @@ def root(match_index):
     _dota2 = database.mycursor.fetchall()
     return _dota2
 
+
 print('API Started')
 
+if __name__ == '__main__':
+    uvicorn.run(app="api_match_tracker:app", reload=True)

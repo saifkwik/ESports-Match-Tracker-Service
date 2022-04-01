@@ -5,6 +5,11 @@ from games_tracked.dota2 import dota2_time
 from db import database
 
 
+# from dateutil.tz import gettz
+# from utils.logs_handler import create_logger
+
+# logger = create_logger(__name__, remote_logging=False)
+
 def dota2_database_update(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
@@ -43,7 +48,6 @@ def dota2_database_update(url):
     for values in range(15):
         now = datetime.now()
         current_time = now.strftime('%H:%M:%S')
-        # sql_insert = 'INSERT INTO DOTA2_MATCHES (_INDEX, TEAMS, TIME_IST, Last_updated) VALUES(%s, %s, %s, %s)'
         sql_insert = 'UPDATE DOTA2_MATCHES SET TEAMS = %s, TIME_IST = %s, Last_updated = %s WHERE _INDEX = %s'
         val = (
             str(f'{final_team_list[u][0]} VS {final_team_list[u][1]}'), str(dota2_time.dota2_time[u]),
@@ -57,6 +61,7 @@ def dota2_database_update(url):
         u += 1
 
     print(f'DOTA2 Matches Schedule Updated successfully!')
+    # logger.info('dota2_matches_ran_successfully')
 
     # Merging Match names with time of Matches and converting it in a dictionary
     dota2_dict = dict(zip(dota2_team_list, dota2_time.dota2_time))

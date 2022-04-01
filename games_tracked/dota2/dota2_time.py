@@ -19,7 +19,7 @@ browser.close()
 soup = BeautifulSoup(html_source, 'html.parser')
 divTag = soup.find_all("span", class_="match-countdown")
 
-
+# pprint.pprint(divTag)
 a = []
 t = 0
 for tag in divTag:

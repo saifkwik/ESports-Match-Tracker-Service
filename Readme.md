@@ -7,7 +7,7 @@ Based on the App this Bot fetches data from API and displays result in the teleg
 *  www.t.me/ESports_match_tracker_bot
 
 
-![alt text](https://github.com/saifkwik/api_esports_matches/blob/main/screenshots/api_esports_matches.png)
+![alt text](https://github.com/saifkwik/api_esports_matches/blob/main/api_esports_matches.png)
 
 ## API Installation
 * clone the repo and type ` uvicorn api_match_tracker:app --reload` in the terminal directory.

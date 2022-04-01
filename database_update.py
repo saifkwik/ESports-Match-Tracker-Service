@@ -13,3 +13,5 @@ dota2_database_update(dota2_url)
 
 time = time.perf_counter()
 print(f'Time taken: {time} seconds')
+
+#sds

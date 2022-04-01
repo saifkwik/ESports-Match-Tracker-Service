@@ -9,7 +9,8 @@ options.headless = True
 # options.add_argument('--disable-dev-shm-usage')
 
 browser = webdriver.Chrome(executable_path="chrome_driver/chromedriver.exe", options=options)
-# browser = webdriver.Chrome(executable_path="/match-tracker/api_esports_matches/chrome_driver/chromedriver", options=options)
+# browser = webdriver.Chrome(executable_path="/match-tracker/api_esports_matches/chrome_driver/chromedriver", 
+# options=options) 
 
 browser.get("https://liquipedia.net/dota2/Liquipedia:Upcoming_and_ongoing_matches")
 html_source = browser.page_source

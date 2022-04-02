@@ -6,7 +6,7 @@ from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.filters import Filters
 import requests
 
-updater = Updater("5188162071:AAEcgWM2NGal52V6FJnrjoU-IVNRdfEe7Mo",
+updater = Updater("Enter your API Key here",
                   use_context=True)
 
 

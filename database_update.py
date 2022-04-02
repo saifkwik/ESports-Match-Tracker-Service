@@ -11,17 +11,17 @@ dota2_url = 'https://liquipedia.net/dota2/Liquipedia:Upcoming_and_ongoing_matche
 urls = [valo_url, cs_url, dota2_url]
 
 
-def games_function(urls):
-    if urls == "https://vlr.gg":
+def games_function(url):
+    if url == valo_url:
         valo_update_database(valo_url)
-    if urls == "https://ggscore.com/en/csgo/matches":
+    if url == cs_url:
         cs_database_update(cs_url)
-    if urls == "https://liquipedia.net/dota2/Liquipedia:Upcoming_and_ongoing_matches":
+    if url == dota2_url:
         dota2_database_update(dota2_url)
 
 
 def main():
-    with ThreadPoolExecutor(max_workers=50) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         executor.map(games_function, urls)
 
 
